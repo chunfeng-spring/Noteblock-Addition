@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.chunfeng.noteadd.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"NoteblockMixin",
+		"SoundSystemMixin",
+		"PlaySoundCommandMixin",
+		"SoundEventMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

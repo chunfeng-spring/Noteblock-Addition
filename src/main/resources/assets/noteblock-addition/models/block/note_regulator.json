@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "noteblock-addition:block/note_regulator"
+  }
+}
