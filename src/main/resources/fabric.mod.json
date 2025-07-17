@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "noteblock-addition",
+	"version": "${version}",
+	"name": "Noteblock Addition",
+	"description": "A mod which might be helpful for creating complicated noteblock music",
+	"authors": [
+		"chunfeng-spring"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/noteblock-addition/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.chunfeng.noteadd.NoteblockAddition"
+		],
+		"fabric-datagen": [
+			"com.chunfeng.noteadd.NoteblockAdditionDataGenerator"
+		],
+		"client": [
+			"com.chunfeng.noteadd.NoteblockAdditionClient"
+		]
+	},
+	"mixins": [
+		"noteblock-addition.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
