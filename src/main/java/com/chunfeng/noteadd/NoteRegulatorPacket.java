@@ -15,13 +15,20 @@ import net.minecraft.util.math.BlockPos;
 public class NoteRegulatorPacket {
     public static final Identifier ID = new Identifier("noteblock-addition", "note_regulator");
 
+<<<<<<< HEAD
     public static void sendToServer(BlockPos pos, int octave, int cent, int volume, int delay) {
+=======
+    public static void sendToServer(BlockPos pos, int octave, int cent, int volume) {
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeBlockPos(pos);
         buf.writeInt(octave);
         buf.writeInt(cent);
         buf.writeInt(volume);
+<<<<<<< HEAD
         buf.writeInt(delay);
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         ClientPlayNetworking.send(ID, buf);
     }
 
@@ -34,15 +41,24 @@ public class NoteRegulatorPacket {
                     int octave = buf.readInt();
                     int cent = buf.readInt();
                     int volume = buf.readInt();
+<<<<<<< HEAD
                     int delay = buf.readInt();
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
                     server.execute(() -> {
                         // 更新方块实体
                         if (player.getWorld().getBlockEntity(pos) instanceof NoteRegulatorEntity blockEntity) {
+<<<<<<< HEAD
                             blockEntity.setOctave(octave);
                             blockEntity.setCent(cent);
                             blockEntity.setVolume(volume);
                             blockEntity.setDelay(delay);
+=======
+                            blockEntity.setOctaveOffset(octave);
+                            blockEntity.setCentOffset(cent);
+                            blockEntity.setVolume(volume);
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                         }
                     });
                 }

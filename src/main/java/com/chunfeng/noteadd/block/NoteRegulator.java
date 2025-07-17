@@ -6,7 +6,14 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+<<<<<<< HEAD
 import net.minecraft.block.*;
+=======
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.MinecraftClient;
@@ -21,8 +28,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+<<<<<<< HEAD
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 import net.minecraft.world.World;
 
 public class NoteRegulator {
@@ -49,6 +59,7 @@ public class NoteRegulator {
             super(settings);
         }
 
+<<<<<<< HEAD
         private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 0.1, 16);
 
         @Override
@@ -56,6 +67,8 @@ public class NoteRegulator {
             return SHAPE;
         }
 
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         @Override
         public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
             return new NoteRegulatorEntity(pos, state);
@@ -80,7 +93,11 @@ public class NoteRegulator {
 
     // 注册音符盒调节器
     public static final Block NOTE_REGULATOR = register("note_regulator",
+<<<<<<< HEAD
             new NoteRegulatorBlock(FabricBlockSettings.copyOf(Blocks.RED_CARPET).nonOpaque().noCollision().nonOpaque()));
+=======
+            new NoteRegulatorBlock(FabricBlockSettings.copyOf(Blocks.RED_CARPET).nonOpaque().noCollision()));
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
     // 注册方块和相关实体
     public static void registerBlock() {

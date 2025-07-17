@@ -1,8 +1,11 @@
 package com.chunfeng.noteadd.gui;
 
 import com.chunfeng.noteadd.config.SoundConfig;
+<<<<<<< HEAD
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 import com.google.gson.JsonObject;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
@@ -50,7 +53,11 @@ public class AddMappingGUI extends Screen {
         int bottomMargin = 50; // 底部边距
         int listHeight = height - topMargin - bottomMargin;
         int listWidth = (width - 30) / 2; // 列表宽度
+<<<<<<< HEAD
         int listItemHeight = 16; // 列表项的高度
+=======
+        int listItemHeight = 20; // 列表项的高度
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         int searchFieldWidth = listWidth - 90; // 搜索框宽度
 
         // 创建方块搜索框
@@ -77,6 +84,17 @@ public class AddMappingGUI extends Screen {
         soundSearchField.setPlaceholder(Text.literal("搜索音效..."));
         addDrawableChild(soundSearchField);
 
+<<<<<<< HEAD
+=======
+        // 搜索框事件监听
+        blockSearchField.setChangedListener(text -> {
+            blockList.reloadList();
+        });
+        soundSearchField.setChangedListener(text -> {
+            soundList.reloadList();
+        });
+
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         // 方块选择列表
         this.blockListX = 10;
         this.blockList = new BlockSelectionList(client, listWidth, listHeight, topMargin, listItemHeight) {
@@ -84,6 +102,14 @@ public class AddMappingGUI extends Screen {
             protected int getScrollbarPositionX() {
                 return this.left + this.width - 6;
             }
+<<<<<<< HEAD
+=======
+
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int button) {
+                return super.mouseClicked(mouseX, mouseY, button);
+            }
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         };
         blockList.setLeftPos(blockListX);
         addSelectableChild(blockList);
@@ -95,13 +121,24 @@ public class AddMappingGUI extends Screen {
             protected int getScrollbarPositionX() {
                 return this.left + this.width - 6;
             }
+<<<<<<< HEAD
+=======
+
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int button) {
+                return super.mouseClicked(mouseX, mouseY, button);
+            }
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         };
         soundList.setLeftPos(soundListX);
         addSelectableChild(soundList);
 
+<<<<<<< HEAD
         blockSearchField.setChangedListener(text -> blockList.reloadList());
         soundSearchField.setChangedListener(text -> soundList.reloadList());
 
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         // 添加按钮
         int centerX = width / 2;
         int buttonY = height - 45;
@@ -121,6 +158,7 @@ public class AddMappingGUI extends Screen {
     }
 
     private void addSelectedMapping() {
+<<<<<<< HEAD
         if (blockList != null && soundList != null) {
             String blockId = blockList.getSelectedItem();
             String soundId = soundList.getSelectedItem();
@@ -128,6 +166,18 @@ public class AddMappingGUI extends Screen {
                 SoundConfig.addMapping(blockId, soundId);
             }
         }
+=======
+        // 获取选中的blockId和soundId
+        Optional.ofNullable(blockList)
+                .flatMap(list -> Optional.ofNullable(list.getSelectedItem()))
+                .flatMap(blockId -> Optional.ofNullable(soundList)
+                        .flatMap(list -> Optional.ofNullable(list.getSelectedItem()))
+                        .map(soundId -> {
+                            SoundConfig.addMapping(blockId, soundId);
+                            return true;
+                        })
+                );
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
     }
 
     private void updateAddButtonState() {
@@ -148,14 +198,25 @@ public class AddMappingGUI extends Screen {
         renderBackground(context);
 
         // 绘制标题和标签
+<<<<<<< HEAD
         context.drawText(textRenderer, Text.literal("选择方块"),
                 blockListX + 5, 18, 0xFFFFFF, false);
         context.drawText(textRenderer, Text.literal("选择音效"),
                 soundListX + 5, 18, 0xFFFFFF, false);
+=======
+        if (textRenderer != null) {
+            context.drawText(textRenderer, Text.literal("选择方块"),
+                    blockListX + 5, 20, 0xFFFFFF, false);
+
+            context.drawText(textRenderer, Text.literal("选择音效"),
+                    soundListX + 5, 20, 0xFFFFFF, false);
+        }
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
         blockSearchField.render(context, mouseX, mouseY, delta);
         soundSearchField.render(context, mouseX, mouseY, delta);
 
+<<<<<<< HEAD
         blockList.render(context, mouseX, mouseY, delta);
         soundList.render(context, mouseX, mouseY, delta);
 
@@ -173,6 +234,10 @@ public class AddMappingGUI extends Screen {
                 context.drawTooltip(textRenderer, Text.literal(hoveredSound.id), mouseX, mouseY);
             }
         }
+=======
+        if (blockList != null) blockList.render(context, mouseX, mouseY, delta);
+        if (soundList != null) soundList.render(context, mouseX, mouseY, delta);
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
         super.render(context, mouseX, mouseY, delta);
     }
@@ -182,6 +247,7 @@ public class AddMappingGUI extends Screen {
 
         public SelectionList(MinecraftClient client, int width, int height, int top, int itemHeight) {
             super(client, width, height, top, top + height, itemHeight);
+<<<<<<< HEAD
             this.setRenderBackground(true);
             this.setRenderHorizontalShadows(false);
             this.setRenderSelection(true);
@@ -189,6 +255,11 @@ public class AddMappingGUI extends Screen {
 
         public Entry getHoveredEntryPublic() {
             return this.getHoveredEntry(); // 可以访问父类的protected方法
+=======
+            this.setRenderBackground(true); // 渲染背景
+            this.setRenderHorizontalShadows(false); // 不渲染水平阴影
+            this.setRenderSelection(true); // 启用选择渲染
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         }
 
         public String getSelectedItem() {
@@ -221,16 +292,27 @@ public class AddMappingGUI extends Screen {
             public List<? extends Selectable> selectableChildren() {
                 return Collections.emptyList();
             }
+<<<<<<< HEAD
 
             public abstract boolean isMouseOver(double mouseX, double mouseY);
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         }
     }
 
     private class BlockSelectionList extends SelectionList {
+<<<<<<< HEAD
         private List<String> allBlockIds;
 
         public BlockSelectionList(MinecraftClient client, int width, int height, int top, int itemHeight) {
             super(client, width, height, top, itemHeight);
+=======
+        private List<String> allBlockIds; // 存储所有方块ID
+        public BlockSelectionList(MinecraftClient client, int width, int height, int top, int itemHeight) {
+            super(client, width, height, top, itemHeight);
+
+            // 获取所有方块并排序
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             allBlockIds = new ArrayList<>();
             Registries.BLOCK.forEach(block -> {
                 if (!block.asItem().getDefaultStack().isEmpty()) {
@@ -238,6 +320,10 @@ public class AddMappingGUI extends Screen {
                 }
             });
             allBlockIds.sort(String::compareToIgnoreCase);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             reloadList();
         }
 
@@ -245,6 +331,7 @@ public class AddMappingGUI extends Screen {
             clearEntries();
             String searchText = blockSearchField.getText().toLowerCase();
 
+<<<<<<< HEAD
             allBlockIds.stream()
                     .filter(id -> searchText.isEmpty() || id.toLowerCase().contains(searchText))
                     .forEach(id -> addEntry(new BlockEntry(id)));
@@ -253,6 +340,16 @@ public class AddMappingGUI extends Screen {
         private class BlockEntry extends Entry {
             private int entryX, entryY, entryWidth, entryHeight; // 新增字段记录位置
 
+=======
+            for (String id : allBlockIds) {
+                if (searchText.isEmpty() || id.toLowerCase().contains(searchText)) {
+                    addEntry(new BlockEntry(id));
+                }
+            }
+        }
+
+        private class BlockEntry extends Entry {
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             public BlockEntry(String id) {
                 super(id);
             }
@@ -260,6 +357,7 @@ public class AddMappingGUI extends Screen {
             @Override
             public void render(DrawContext context, int index, int y, int x, int entryWidth, int entryHeight,
                                int mouseX, int mouseY, boolean hovered, float delta) {
+<<<<<<< HEAD
                 this.entryX = x;
                 this.entryY = y;
                 this.entryWidth = entryWidth;
@@ -270,11 +368,26 @@ public class AddMappingGUI extends Screen {
                     context.drawItem(new ItemStack(block), x - 2, y - 2, 8, 8);
                     int color = (selectedItem != null && selectedItem.equals(id)) ? 0x55FF55 : 0xFFFFFF;
                     context.drawText(textRenderer, id, x + 15, y + 3, color, false);
+=======
+                if (textRenderer != null) {
+                    Block block = Registries.BLOCK.get(Identifier.tryParse(id));
+
+                    if (block != null) {
+                        // 方块图标
+                        context.drawItem(new ItemStack(block), x + 2, y + 2);
+
+                        // 方块名称
+                        int color = (selectedItem != null && selectedItem.equals(id)) ? 0x55FF55 : 0xFFFFFF;
+                        String displayId = textRenderer.trimToWidth(id, entryWidth - 30);
+                        context.drawText(textRenderer, displayId, x + 25, y + 7, color, false);
+                    }
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 }
             }
 
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int button) {
+<<<<<<< HEAD
                 if (isMouseOver(mouseX, mouseY)) {
                     setSelectedItem(id);
                     return true;
@@ -289,15 +402,24 @@ public class AddMappingGUI extends Screen {
                         mouseX <= entryX + entryWidth &&
                         mouseY >= entryY &&
                         mouseY <= entryY + entryHeight;
+=======
+                setSelectedItem(id);
+                return true;
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             }
         }
     }
 
     private class SoundSelectionList extends SelectionList {
         private static final Set<String> IGNORED_KEYS = Set.of("remove");
+<<<<<<< HEAD
         private final Map<String, List<String>> soundVariations = new HashMap<>();
         private final List<String> allSoundIds = new ArrayList<>();
         private final List<String> customSoundIds = new ArrayList<>();
+=======
+        private final Set<String> customSoundIds = new HashSet<>();
+        private final Set<String> vanillaSoundIds = new HashSet<>();
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
         public SoundSelectionList(MinecraftClient client, int width, int height, int top, int itemHeight) {
             super(client, width, height, top, itemHeight);
@@ -305,14 +427,21 @@ public class AddMappingGUI extends Screen {
             reloadList();
         }
 
+<<<<<<< HEAD
         private void loadAllSounds() {
             soundVariations.clear();
             allSoundIds.clear();
             customSoundIds.clear();
+=======
+        public void loadAllSounds() {
+            customSoundIds.clear();
+            vanillaSoundIds.clear();
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
             ResourceManager resourceManager = client.getResourceManager();
             if (resourceManager == null) return;
 
+<<<<<<< HEAD
             for (String namespace : resourceManager.getAllNamespaces()) {
                 Identifier soundsFileId = new Identifier(namespace, "sounds.json");
                 try {
@@ -383,6 +512,27 @@ public class AddMappingGUI extends Screen {
                 } else if (element.isJsonPrimitive()) {
                     variations.add(element.getAsString());
                 }
+=======
+            // 扫描所有自定义音效
+            for (String namespace : resourceManager.getAllNamespaces()) {
+                Identifier soundsFileId = new Identifier(namespace, "sounds.json");
+                Optional<Resource> resource = resourceManager.getResource(soundsFileId);
+
+                if (resource.isEmpty()) continue;
+
+                try (InputStream stream = resource.get().getInputStream()) {
+                    JsonObject json = JsonHelper.deserialize(new InputStreamReader(stream));
+                    for (String key : json.keySet()) {
+                        if (IGNORED_KEYS.contains(key)) continue;
+                        customSoundIds.add(namespace + ":" + key);
+                    }
+                } catch (Exception ignored) {}
+            }
+
+            // 添加所有原版音效
+            for (Identifier soundId : Registries.SOUND_EVENT.getIds()) {
+                vanillaSoundIds.add(soundId.toString());
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             }
         }
 
@@ -390,6 +540,7 @@ public class AddMappingGUI extends Screen {
             clearEntries();
             String searchText = soundSearchField.getText().toLowerCase();
 
+<<<<<<< HEAD
             // 添加自定义音效
             customSoundIds.stream()
                     .sorted()
@@ -417,11 +568,37 @@ public class AddMappingGUI extends Screen {
             public SoundEntry(String id, boolean hasMultipleVariations) {
                 super(id);
                 this.hasMultipleVariations = hasMultipleVariations;
+=======
+            customSoundIds.stream()
+                    .sorted()
+                    .filter(id -> searchText.isEmpty() || id.toLowerCase().contains(searchText))
+                    .forEach(id -> addEntry(new SoundEntry(id, false)));
+
+            vanillaSoundIds.stream()
+                    .sorted()
+                    .filter(id -> searchText.isEmpty() || id.toLowerCase().contains(searchText))
+                    .forEach(id -> addEntry(new SoundEntry(id, true)));
+        }
+
+        private class SoundEntry extends Entry {
+            private final boolean isVanilla;
+
+            public SoundEntry(String id, boolean isVanilla) {
+                super(id);
+                this.isVanilla = isVanilla;
+            }
+
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int button) {
+                setSelectedItem(id);
+                return true;
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             }
 
             @Override
             public void render(DrawContext context, int index, int y, int x, int entryWidth, int entryHeight,
                                int mouseX, int mouseY, boolean hovered, float delta) {
+<<<<<<< HEAD
                 this.entryX = x;
                 this.entryY = y;
                 this.entryWidth = entryWidth;
@@ -453,6 +630,15 @@ public class AddMappingGUI extends Screen {
                         mouseX <= entryX + entryWidth &&
                         mouseY >= entryY &&
                         mouseY <= entryY + entryHeight;
+=======
+                if (textRenderer != null) {
+                    // 自定义音效显示黄色，原版音效显示白色
+                    int color = (selectedItem != null && selectedItem.equals(id)) ? 0x55FF55 :
+                            isVanilla ? 0xFFFFFF : 0xFFFF00;
+
+                    context.drawText(textRenderer, id, x + 5, y + 7, color, false);
+                }
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             }
         }
     }

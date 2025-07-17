@@ -2,6 +2,10 @@
   "parent": "minecraft:block/carpet",
   "textures": {
     "wool": "noteblock-addition:block/note_regulator"
+<<<<<<< HEAD
   },
   "render_type":"minecraft:translucent"
+=======
+  }
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 }

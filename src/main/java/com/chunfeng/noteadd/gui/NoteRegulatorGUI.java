@@ -20,6 +20,7 @@ public class NoteRegulatorGUI extends Screen {
     private final NoteRegulatorEntity blockEntity;
     private TextFieldWidget centField;
     private TextFieldWidget volumeField;
+<<<<<<< HEAD
     private TextFieldWidget delayField;
     private CentSliderWidget centSlider;
     private OctaveSliderWidget octaveSlider;
@@ -29,6 +30,14 @@ public class NoteRegulatorGUI extends Screen {
     private int initialCentValue = 0;
     private int initialVolumeValue = 100;
     private int initialDelayValue = 0;
+=======
+    private CentSliderWidget centSlider;
+    private OctaveSliderWidget octaveSlider;
+    private VolumeSliderWidget volumeSlider;
+    private int initialOctaveValue = 0;
+    private int initialCentValue = 0;
+    private int initialVolumeValue = 100;
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
     public NoteRegulatorGUI(BlockPos blockPos, NoteRegulatorEntity blockEntity) {
         super(Text.of("音符盒扩展调节器"));
@@ -36,10 +45,16 @@ public class NoteRegulatorGUI extends Screen {
         this.blockEntity = blockEntity;
 
         // 从方块实体初始化值
+<<<<<<< HEAD
         this.initialOctaveValue = blockEntity.getOctave();
         this.initialCentValue = blockEntity.getCent();
         this.initialVolumeValue = blockEntity.getVolume();
         this.initialDelayValue = blockEntity.getDelay();
+=======
+        this.initialOctaveValue = blockEntity.getOctaveOffset();
+        this.initialCentValue = blockEntity.getCentOffset();
+        this.initialVolumeValue = blockEntity.getVolume();
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
     }
 
     @Override
@@ -60,7 +75,11 @@ public class NoteRegulatorGUI extends Screen {
 
         // 音分偏移滑块
         this.centSlider = new CentSliderWidget(
+<<<<<<< HEAD
                 centerX - sliderWidth/2, centerY - 15,
+=======
+                centerX - sliderWidth/2, centerY - 10,
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 sliderWidth, 20,
                 initialCentValue
         ) {
@@ -79,7 +98,11 @@ public class NoteRegulatorGUI extends Screen {
         this.centField = new TextFieldWidget(
                 this.textRenderer,
                 centerX + sliderWidth/2 + 10,
+<<<<<<< HEAD
                 centerY - 15,
+=======
+                centerY - 10,
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 35, 20,
                 Text.of("")
         );
@@ -97,7 +120,11 @@ public class NoteRegulatorGUI extends Screen {
 
         // 音量滑块
         this.volumeSlider = new VolumeSliderWidget(
+<<<<<<< HEAD
                 centerX - sliderWidth/2, centerY + 20,
+=======
+                centerX - sliderWidth/2, centerY + 30,
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 sliderWidth, 20,
                 initialVolumeValue
         ) {
@@ -116,7 +143,11 @@ public class NoteRegulatorGUI extends Screen {
         this.volumeField = new TextFieldWidget(
                 this.textRenderer,
                 centerX + sliderWidth/2 + 10,
+<<<<<<< HEAD
                 centerY + 20,
+=======
+                centerY + 30,
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 35, 20,
                 Text.of("")
         );
@@ -131,6 +162,7 @@ public class NoteRegulatorGUI extends Screen {
             } catch (NumberFormatException ignored) {}
         });
         this.addDrawableChild(this.volumeField);
+<<<<<<< HEAD
 
         // 播放延迟滑块
         this.delaySlider = new DelaySliderWidget(
@@ -168,6 +200,8 @@ public class NoteRegulatorGUI extends Screen {
             } catch (NumberFormatException ignored) {}
         });
         this.addDrawableChild(this.delayField);
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
     }
 
     @Override
@@ -176,18 +210,29 @@ public class NoteRegulatorGUI extends Screen {
         int finalOctave = octaveSlider.getValue();
         int finalCent = centSlider.getValue();
         int finalVolume = volumeSlider.getValue();
+<<<<<<< HEAD
         int finalDelay = delaySlider.getValue();
 
         if (finalOctave != initialOctaveValue ||
                 finalCent != initialCentValue ||
                 finalVolume != initialVolumeValue ||
                 finalDelay != initialDelayValue) {
+=======
+
+        if (finalOctave != initialOctaveValue ||
+                finalCent != initialCentValue ||
+                finalVolume != initialVolumeValue) {
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 NoteRegulatorPacket.sendToServer(
                         blockPos,
                         finalOctave,
                         finalCent,
+<<<<<<< HEAD
                         finalVolume,
                         finalDelay
+=======
+                        finalVolume
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 );
         }
         super.close();
@@ -224,7 +269,11 @@ public class NoteRegulatorGUI extends Screen {
                 this.textRenderer,
                 Text.of("音分偏移："),
                 centerX - (int)(this.width * 0.3),
+<<<<<<< HEAD
                 centerY - 10,
+=======
+                centerY - 5,
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 0xFFFFFF,
                 false
         );
@@ -233,6 +282,7 @@ public class NoteRegulatorGUI extends Screen {
                 this.textRenderer,
                 Text.of("音量调节："),
                 centerX - (int)(this.width * 0.3),
+<<<<<<< HEAD
                 centerY + 25,
                 0xFFFFFF,
                 false
@@ -243,6 +293,9 @@ public class NoteRegulatorGUI extends Screen {
                 Text.of("播放延迟："),
                 centerX - (int)(this.width * 0.3),
                 centerY + 60,
+=======
+                centerY + 35,
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 0xFFFFFF,
                 false
         );
@@ -269,6 +322,7 @@ public class NoteRegulatorGUI extends Screen {
                 false
         );
 
+<<<<<<< HEAD
         int msX = this.delayField.getX() + this.delayField.getWidth() + 5;
         int msY = this.delayField.getY() + (this.delayField.getHeight() / 2) - (textRenderer.fontHeight / 2);
         context.drawText(
@@ -280,6 +334,8 @@ public class NoteRegulatorGUI extends Screen {
                 false
         );
 
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         super.render(context, mouseX, mouseY, delta);
     }
 
@@ -527,6 +583,7 @@ public class NoteRegulatorGUI extends Screen {
             );
         }
     }
+<<<<<<< HEAD
 
     // 播放延迟滑块控件
     private static abstract class DelaySliderWidget extends BaseSliderWidget {
@@ -591,4 +648,6 @@ public class NoteRegulatorGUI extends Screen {
 
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
+=======
+>>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 }
