@@ -14,46 +14,27 @@ import java.util.List;
 
 public class SoundConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-<<<<<<< HEAD
     private static final Path CONFIG_DIR = FabricLoader.getInstance().getConfigDir().resolve("sound_mappings");
     private static final Type MAPPING_LIST_TYPE = new TypeToken<List<SoundMapping>>() {}.getType();
     private static int index = 1;
     private static final Path STATE_FILE = CONFIG_DIR.resolve("current_index.json");
-=======
-    private static final Path CONFIG_FILE = FabricLoader.getInstance().getConfigDir().resolve("sound_mappings.json");
-    private static final Type MAPPING_LIST_TYPE = new TypeToken<List<SoundMapping>>() {}.getType();
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 
     public static class SoundMapping {
         private String block;
         private String sound;
 
-<<<<<<< HEAD
-=======
-        public SoundMapping() {}
-
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         public SoundMapping(String blockId, String soundId) {
             this.block = blockId;
             this.sound = soundId;
         }
 
-<<<<<<< HEAD
         public String getBlock() { return block; }
         public String getSound() { return sound; }
 
-=======
-        // Getters
-        public String getBlock() { return block; }
-        public String getSound() { return sound; }
-
-        // Setters
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         public void setBlock(String block) { this.block = block; }
         public void setSound(String sound) { this.sound = sound; }
     }
 
-<<<<<<< HEAD
     static {
         try {
             if (Files.exists(STATE_FILE)) {
@@ -105,22 +86,12 @@ public class SoundConfig {
             Path configFile = getCurrentTable();
             if (!Files.exists(configFile)) {
                 Files.createDirectories(configFile.getParent());
-=======
-    private static List<SoundMapping> getMappings() {
-        try {
-            if (!Files.exists(CONFIG_FILE)) {
-                Files.createDirectories(CONFIG_FILE.getParent());
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 List<SoundMapping> defaults = createDefaultMappings();
                 saveMappings(defaults);
                 return defaults;
             }
 
-<<<<<<< HEAD
             String json = Files.readString(configFile);
-=======
-            String json = Files.readString(CONFIG_FILE);
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
             return GSON.fromJson(json, MAPPING_LIST_TYPE);
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,13 +102,8 @@ public class SoundConfig {
     private static List<SoundMapping> createDefaultMappings() {
         List<SoundMapping> defaults = new ArrayList<>();
         defaults.add(new SoundMapping(
-<<<<<<< HEAD
                 "minecraft:air",
                 "minecraft:sound_114514"
-=======
-                "minecraft:stone",
-                "minecraft:block.stone.break"
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         ));
         return defaults;
     }
@@ -145,11 +111,7 @@ public class SoundConfig {
     private static void saveMappings(List<SoundMapping> mappings) {
         try {
             String json = GSON.toJson(mappings);
-<<<<<<< HEAD
             Files.writeString(getCurrentTable(), json);
-=======
-            Files.writeString(CONFIG_FILE, json);
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         } catch (IOException e) {
             e.printStackTrace();
         }

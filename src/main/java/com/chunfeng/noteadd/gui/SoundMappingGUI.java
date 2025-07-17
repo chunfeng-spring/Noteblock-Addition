@@ -31,7 +31,6 @@ public class SoundMappingGUI extends Screen {
     protected void init() {
         super.init();
 
-<<<<<<< HEAD
         this.mappingList = new MappingListWidget(client, width, height, 30, height - 40, 25);
         addDrawableChild(mappingList);
 
@@ -59,28 +58,14 @@ public class SoundMappingGUI extends Screen {
                 );
         addDrawableChild(tableSelector);
 
-=======
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         int buttonY = height - 30;
         int centerX = width / 2;
         int buttonSpacing = 10;
 
-<<<<<<< HEAD
-=======
-        // 映射列表
-        this.mappingList = new MappingListWidget(client, width, height, 30, height - 40, 25);
-        addDrawableChild(mappingList);
-
-        // 添加新映射按钮
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         this.addDrawableChild(ButtonWidget.builder(Text.literal("添加新映射"), button -> {
             client.setScreen(new AddMappingGUI(this));
         }).dimensions(centerX - 100 - buttonSpacing, buttonY, 100, BUTTON_HEIGHT).build());
 
-<<<<<<< HEAD
-=======
-        // 关闭按钮
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
         this.addDrawableChild(ButtonWidget.builder(Text.literal("完成"), button -> close())
                 .dimensions(centerX + buttonSpacing, buttonY, 100, BUTTON_HEIGHT).build());
     }
@@ -142,43 +127,21 @@ public class SoundMappingGUI extends Screen {
 
                 int iconY = y + 5;
 
-<<<<<<< HEAD
-=======
-                // 绘制方块图标
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 if (block != null) {
                     context.drawItem(new ItemStack(block), x + 5, iconY);
                 }
 
-<<<<<<< HEAD
                 int nameX = x + 30;
                 int nameY = y + 5;
 
                 context.drawText(textRenderer, blockName, nameX, nameY, 0xFFFFFF, false);
 
-=======
-                // 绘制方块名称和ID
-                int nameX = x + 30;
-                int nameY = y + 5;
-
-                // 方块名称（白色）
-                context.drawText(textRenderer, blockName, nameX, nameY, 0xFFFFFF, false);
-
-                // 方块ID（灰色）
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 int idWidth = textRenderer.getWidth(blockId);
                 int idX = nameX + textRenderer.getWidth(blockName) + 10;
                 context.drawText(textRenderer, "(" + blockId + ")", idX, nameY, 0xAAAAAA, false);
 
-<<<<<<< HEAD
                 context.drawText(textRenderer, "音效: " + soundName, nameX, y + 18, 0xAAAAAA, false);
 
-=======
-                // 绘制音效ID
-                context.drawText(textRenderer, "音效: " + soundName, nameX, y + 18, 0xAAAAAA, false);
-
-                // 删除按钮
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
                 if (deleteButton == null) {
                     deleteButton = ButtonWidget.builder(Text.literal("删除"), button -> {
                         SoundConfig.removeMapping(mapping.getBlock());

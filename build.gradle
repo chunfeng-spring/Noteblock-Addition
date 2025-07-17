@@ -32,10 +32,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-<<<<<<< HEAD
-=======
-	
->>>>>>> 236b4fda25b280d805b2fc0de2773740f0da762b
 }
 
 processResources {
