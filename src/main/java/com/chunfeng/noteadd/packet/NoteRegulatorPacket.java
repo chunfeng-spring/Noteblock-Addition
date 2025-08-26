@@ -1,4 +1,4 @@
-package com.chunfeng.noteadd;
+package com.chunfeng.noteadd.packet;
 
 import com.chunfeng.noteadd.block.NoteRegulatorEntity;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;

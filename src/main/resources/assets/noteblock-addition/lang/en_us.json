@@ -1,4 +1,6 @@
 {
   "item.noteblock-addition.note_regulator": "Note Regulator",
-  "block.noteblock-addition.note_regulator": "Note Regulator"
+  "block.noteblock-addition.note_regulator": "Note Regulator",
+  "item.noteblock-addition.new_note_block": "New Note block",
+  "block.noteblock-addition.new_note_block": "New Note block"
 }

@@ -66,8 +66,10 @@ public class SoundMappingGUI extends Screen {
             client.setScreen(new AddMappingGUI(this));
         }).dimensions(centerX - 100 - buttonSpacing, buttonY, 100, BUTTON_HEIGHT).build());
 
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("完成"), button -> close())
-                .dimensions(centerX + buttonSpacing, buttonY, 100, BUTTON_HEIGHT).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("完成"), button -> {
+            SoundConfig.getMappingsArray();
+            close();
+        }).dimensions(centerX + buttonSpacing, buttonY, 100, BUTTON_HEIGHT).build());
     }
 
     @Override

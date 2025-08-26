@@ -1,6 +1,6 @@
 package com.chunfeng.noteadd.gui;
 
-import com.chunfeng.noteadd.NoteRegulatorPacket;
+import com.chunfeng.noteadd.packet.NoteRegulatorPacket;
 import com.chunfeng.noteadd.block.NoteRegulatorEntity;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
 public class NoteRegulatorGUI extends Screen {
-    private static final Identifier BACKGROUND_TEXTURE = new Identifier("noteblock-addition", "textures/gui/background.png");
+    private static final Identifier BACKGROUND_TEXTURE = new Identifier("noteblock-addition", "textures/gui/background1.png");
 
     private final BlockPos blockPos;
     private final NoteRegulatorEntity blockEntity;
@@ -216,7 +216,7 @@ public class NoteRegulatorGUI extends Screen {
                 Text.of("八度偏移："),
                 centerX - (int)(this.width * 0.3),
                 centerY - 45,
-                0xFFFFFF,
+                0xFFFF55,
                 false
         );
 
@@ -225,7 +225,7 @@ public class NoteRegulatorGUI extends Screen {
                 Text.of("音分偏移："),
                 centerX - (int)(this.width * 0.3),
                 centerY - 10,
-                0xFFFFFF,
+                0xFFFF55,
                 false
         );
 
@@ -234,7 +234,7 @@ public class NoteRegulatorGUI extends Screen {
                 Text.of("音量调节："),
                 centerX - (int)(this.width * 0.3),
                 centerY + 25,
-                0xFFFFFF,
+                0xFFFF55,
                 false
         );
 
@@ -243,7 +243,7 @@ public class NoteRegulatorGUI extends Screen {
                 Text.of("播放延迟："),
                 centerX - (int)(this.width * 0.3),
                 centerY + 60,
-                0xFFFFFF,
+                0xFFFF55,
                 false
         );
 
@@ -465,10 +465,10 @@ public class NoteRegulatorGUI extends Screen {
             );
 
             // 绘制滑块手柄（浅灰色）
-            int handleX = (int)(this.getX() + (this.sliderValue * (this.width - 8)));
+            int handleX = (int)(this.getX() + (this.sliderValue * (this.width - 12)));
             context.fill(
-                    handleX - 2, this.getY() - 4,
-                    handleX + 10, this.getY() + this.height + 4,
+                    handleX, this.getY() - 4,
+                    handleX + 12, this.getY() + this.height + 4,
                     0xFFEEEEEE
             );
         }
@@ -519,10 +519,10 @@ public class NoteRegulatorGUI extends Screen {
             );
 
             // 绘制滑块手柄
-            int handleX = (int)(this.getX() + (this.sliderValue * (this.width - 8)));
+            int handleX = (int)(this.getX() + (this.sliderValue * (this.width - 12)));
             context.fill(
-                    handleX - 2, this.getY() - 4,
-                    handleX + 10, this.getY() + this.height + 4,
+                    handleX, this.getY() - 4,
+                    handleX + 12, this.getY() + this.height + 4,
                     0xFFEEEEEE
             );
         }
@@ -573,10 +573,10 @@ public class NoteRegulatorGUI extends Screen {
             );
 
             // 绘制滑块手柄
-            int handleX = (int)(this.getX() + (this.sliderValue * (this.width - 8)));
+            int handleX = (int)(this.getX() + (this.sliderValue * (this.width - 12)));
             context.fill(
-                    handleX - 2, this.getY() - 4,
-                    handleX + 10, this.getY() + this.height + 4,
+                    handleX, this.getY() - 4,
+                    handleX + 12, this.getY() + this.height + 4,
                     0xFFEEEEEE
             );
         }

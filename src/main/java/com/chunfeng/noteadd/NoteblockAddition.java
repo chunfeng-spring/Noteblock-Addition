@@ -1,6 +1,7 @@
 package com.chunfeng.noteadd;
 
 import com.chunfeng.noteadd.block.NoteRegulator;
+import com.chunfeng.noteadd.packet.NoteRegulatorPacket;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;

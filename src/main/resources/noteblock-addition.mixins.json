@@ -6,7 +6,9 @@
 		"NoteblockMixin",
 		"SoundSystemMixin",
 		"PlaySoundCommandMixin",
-		"SoundEventMixin"
+		"SoundEventMixin",
+		"RepeaterBlockMixin",
+		"RedstoneWireBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

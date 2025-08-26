@@ -18,6 +18,7 @@ public class SoundConfig {
     private static final Type MAPPING_LIST_TYPE = new TypeToken<List<SoundMapping>>() {}.getType();
     private static int index = 1;
     private static final Path STATE_FILE = CONFIG_DIR.resolve("current_index.json");
+    private static SoundMapping[] mappingsArray = null;
 
     public static class SoundMapping {
         private String block;
@@ -57,6 +58,7 @@ public class SoundConfig {
         if (index >= 1 && index <= 5) {
             SoundConfig.index = index;
             saveCurrentIndex();
+            mappingsArray = null;
         }
     }
 
@@ -121,15 +123,25 @@ public class SoundConfig {
         List<SoundMapping> mappings = getMappings();
         mappings.add(new SoundMapping(blockId, soundId));
         saveMappings(mappings);
+        mappingsArray = null;
     }
 
     public static void removeMapping(String blockId) {
         List<SoundMapping> mappings = getMappings();
         mappings.removeIf(mapping -> mapping.getBlock().equals(blockId));
         saveMappings(mappings);
+        mappingsArray = null;
     }
 
     public static List<SoundMapping> getAllMappings() {
         return getMappings();
+    }
+
+    public static SoundMapping[] getMappingsArray() {
+        if (mappingsArray == null) {
+            List<SoundMapping> list = getMappings();
+            mappingsArray = list.toArray(new SoundMapping[0]);
+        }
+        return mappingsArray;
     }
 }

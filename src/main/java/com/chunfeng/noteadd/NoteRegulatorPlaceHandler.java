@@ -7,11 +7,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -81,8 +84,12 @@ public class NoteRegulatorPlaceHandler {
     }
 
     private static void placeRegulatorBlock(World world, BlockPos pos, NbtCompound stackNbt) {
+        FluidState fluidState = world.getFluidState(pos);
+        boolean waterlogged = fluidState.getFluid() == Fluids.WATER;
+
         // 放置方块
-        final BlockState regulatorState = NoteRegulator.NOTE_REGULATOR.getDefaultState();
+        final BlockState regulatorState = NoteRegulator.NOTE_REGULATOR.getDefaultState()
+                .with(Properties.WATERLOGGED, waterlogged);
         world.setBlockState(pos, regulatorState);
 
         // 处理方块实体数据
@@ -103,6 +110,10 @@ public class NoteRegulatorPlaceHandler {
                     regulatorState,
                     Block.NOTIFY_LISTENERS
             );
+        }
+
+        if (waterlogged) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
     }
 }
